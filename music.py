@@ -23,10 +23,10 @@ def songGen(p1,p2,c1,c2,song):
     wave = np.sin(2 * np.pi * frequency * t)
 
     # Normalize the wave to fit within 16-bit range
-    wave = np.int16(wave / np.max(np.abs(wave)) * 32767)
+    normalisedWave = np.int16(wave / np.max(np.abs(wave)) * 32767)
 
     # Convert the wave to bytes
-    sound = pygame.sndarray.make_sound(wave)
+    sound = pygame.sndarray.make_sound(normalisedWave)
 
     song.append(sound)
 
