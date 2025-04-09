@@ -6,7 +6,7 @@ import numpy as np
 
 # Julia set equation: z_{n+1} = (z_n)^p + c
 
-def juliaFractal (width, height, p, c, max_iterations, gamma=2):
+def juliaFractal (width, height, p, c, max_iterations, gamma=1.5):
     pixels=[]
     for y in range(height):
         for x in range(width):
@@ -69,6 +69,8 @@ def main():
 
     pixels = juliaFractal(width, height, p, c, max_iterations)
     displayJulia(width, height, pixels)
+    for i in range(10):
+        songGen(p1,p2,c1,c2,song)
 
     running = True
     while running:
@@ -76,11 +78,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        for i in range(10):
-            songGen(p1,p2,c1,c2,song)
         for i in song:
             i.play()
-            time.sleep(0.25)
     pygame.quit()
 
 main()
